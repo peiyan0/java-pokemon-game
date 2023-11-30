@@ -50,6 +50,17 @@ class WaterPokemon extends Pokemon {
     }
 }
 
+// Concrete class representing a Water type Pokémon
+class GrassPokemon extends Pokemon {
+    GrassPokemon(String name, int level) {
+        super(name, level);
+    }
+
+    @Override
+    void attack() {
+        System.out.println(name + " used Vine Whip!");
+    }
+}
 // Class representing a Trainer
 class Trainer {
     String name;
