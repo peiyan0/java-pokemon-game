@@ -61,6 +61,31 @@ class GrassPokemon extends Pokemon {
         System.out.println(name + " used Vine Whip!");
     }
 }
+
+// Concrete class representing an Electric type Pokémon
+class ElectricPokemon extends Pokemon {
+    ElectricPokemon(String name, int level) {
+        super(name, level);
+    }
+
+    @Override
+    void attack() {
+        System.out.println(name + " used Thunder Shock!");
+    }
+}
+
+// Concrete class representing a Normal type Pokémon
+class NormalPokemon extends Pokemon {
+    NormalPokemon(String name, int level) {
+        super(name, level);
+    }
+
+    @Override
+    void attack() {
+        System.out.println(name + " used Tackle!");
+    }
+}
+
 // Class representing a Trainer
 class Trainer {
     String name;
