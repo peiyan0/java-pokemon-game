@@ -66,7 +66,7 @@ public class PokemonList {
         new PokemonList("Zapdos", "Electric", 90, "Thunderbolt", 90);
         new PokemonList("Moltres", "Fire", 90, "Fire Blast", 110);
         new PokemonList("Arcanine", "Fire", 90, "Fire Fang", 65);
-        new PokemonList("Gloom", "Grass", 60, "Acid", 40);
+        new PokemonList("Gloom", "Grass", 60, "Vine Whip", 40);
     }
 
     public static void main(String[] args) {
