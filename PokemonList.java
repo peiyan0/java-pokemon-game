@@ -9,8 +9,6 @@ public class PokemonList {
     private String attackName;
     private int attackDamage;
 
-    // Static list to store Pokemon instances
-    private static List<PokemonList> pokemonList = new ArrayList<>();
 
     // Constructor to initialize a Pokemon
     public PokemonList(String name, String type, int hp, String attackName, int attackDamage) {
@@ -23,7 +21,7 @@ public class PokemonList {
         // Add the newly created Pokemon to the list
         pokemonList.add(this);
     }
-
+    
     // Getters and Setters for each attribute
     public String getName() {
         return name;
@@ -52,32 +50,57 @@ public class PokemonList {
 
     // Initialize the Pokemon list with all the Pokemon
     static {
-        new PokemonList("Charmander", "Fire", 39, "Flame Burst", 70);
-        new PokemonList("Bulbasaur", "Grass", 45, "Vine Whip", 45);
-        new PokemonList("Squirtle", "Water", 44, "Water Gun", 40);
-        new PokemonList("Pikachu", "Electric", 35, "Thunder Shock", 40);
-        new PokemonList("Eevee", "Normal", 55, "Tackle", 40);
-        new PokemonList("Rattata", "Normal", 30, "Quick Attack", 40);
-        new PokemonList("Snorlax", "Normal", 160, "Body Slam", 85);
-        new PokemonList("Flareon", "Fire", 65, "Flame Thrower", 90);
-        new PokemonList("Vaporeon", "Water", 130, "Water Pulse", 60);
-        new PokemonList("Jolteon", "Electric", 65, "Thunder", 110);
-        new PokemonList("Leafeon", "Grass", 65, "Leaf Blade", 90);
-        new PokemonList("Zapdos", "Electric", 90, "Thunderbolt", 90);
-        new PokemonList("Moltres", "Fire", 90, "Fire Blast", 110);
-        new PokemonList("Arcanine", "Fire", 90, "Fire Fang", 65);
-        new PokemonList("Gloom", "Grass", 60, "Vine Whip", 40);
+        new PokemonList("Charmander", "Fire", 78, "Flame Burst", 10);
+        new PokemonList("Bulbasaur", "Grass", 90, "Vine Whip", 9);
+        new PokemonList("Squirtle", "Water", 88, "Water Gun", 8);
+        new PokemonList("Pikachu", "Electric", 70, "Thunder Shock", 8);
+        new PokemonList("Eevee", "Normal", 110, "Tackle", 8);
+        new PokemonList("Rattata", "Normal", 60, "Quick Attack", 8);
+        new PokemonList("Snorlax", "Normal", 250, "Body Slam", 9);
+        new PokemonList("Gloom", "Grass", 120, "Vine Whip", 8);
+        new PokemonList("Flareon", "Fire", 130, "Flame Thrower", 15);
+        new PokemonList("Vaporeon", "Water",180, "Water Pulse", 13);
+        new PokemonList("Jolteon", "Electric", 130, "Thunder", 14);
+        new PokemonList("Leafeon", "Grass", 130, "Leaf Blade", 11);
+        new PokemonList("Raikou", "Electric", 800, "Discharge", 25);
+        new PokemonList("Entei", "Fire", 800, "Fire Fang", 25);
+        new PokemonList("Suicune", "Water", 800, "Hydro Pump", 25);
+        
+    }
+
+    // Determine if the Pokemon is Allied or Enemy and add it to the respective list
+    if (name.equals("Charmander") || name.equals("Squirtle") || name.equals("Bulbasaur") || name.equals("Pikachu") || name.equals("Eevee")) {
+        alliedPokemonList.add(this);
+    } else {
+        enemyPokemonList.add(this);
+    }
+
+    // Getter for the Allied Pokemon list
+    public static List<PokemonList> getAlliedPokemonList() {
+        return alliedPokemonList;
+    }
+
+    // Getter for the Enemy Pokemon list
+    public static List<PokemonList> getEnemyPokemonList() {
+        return enemyPokemonList;
     }
 
     public static void main(String[] args) {
-        // Access the Pokemon list using the getter method
-        List<PokemonList> pokemons = getPokemonList();
+        // Displaying the details of Allied Pokemons
+        System.out.println("Allied Pokemons:");
+        for (PokemonList pokemon : alliedPokemonList) {
+            System.out.println("Name: " + pokemon.getName() + ", Type: " + pokemon.getType() +
+                               ", HP: " + pokemon.getHp() + ", Attack: " + pokemon.getAttackName() +
+                               ", Damage: " + pokemon.getAttackDamage());
+        }
 
-        // Displaying the details of each Pokemon
-        for (PokemonList pokemon : pokemons) {
+        // Displaying the details of Enemy Pokemons
+        System.out.println("\nEnemy Pokemons:");
+        for (PokemonList pokemon : enemyPokemonList) {
             System.out.println("Name: " + pokemon.getName() + ", Type: " + pokemon.getType() +
                                ", HP: " + pokemon.getHp() + ", Attack: " + pokemon.getAttackName() +
                                ", Damage: " + pokemon.getAttackDamage());
         }
     }
+}
 }
