@@ -87,20 +87,19 @@ public class PokemonList {
 
     public static void main(String[] args) {
         // Displaying the details of Allied Pokemons
-        System.out.println("Allied Pokemons:");
+        System.out.println("Allied Pokemons:\n");
         for (PokemonList pokemon : alliedPokemonList) {
             System.out.println("Name: " + pokemon.getName() + ", Type: " + pokemon.getType() +
                                ", HP: " + pokemon.getHp() + ", Attack: " + pokemon.getAttackName() +
-                               ", Damage: " + pokemon.getAttackDamage());
+                               ", Damage: " + pokemon.getAttackDamage() + "\n");
         }
 
         // Displaying the details of Enemy Pokemons
-        System.out.println("\nEnemy Pokemons:");
+        System.out.println("\nEnemy Pokemons:\n");
         for (PokemonList pokemon : enemyPokemonList) {
             System.out.println("Name: " + pokemon.getName() + ", Type: " + pokemon.getType() +
                                ", HP: " + pokemon.getHp() + ", Attack: " + pokemon.getAttackName() +
-                               ", Damage: " + pokemon.getAttackDamage());
+                               ", Damage: " + pokemon.getAttackDamage() + "\n");
         }
     }
-}
 }
