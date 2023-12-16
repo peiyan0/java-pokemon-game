@@ -15,23 +15,15 @@ public class PokemonTypeInteractions {
     };
 
     // Method to get effectiveness of an attack from one type to another
-    public static double getEffectiveness(PokemonType attackType, PokemonType defenseType) {
+    public static double getEffectiveness(Pokemon attackPokemon, Pokemon defensePokemon) {
+        PokemonType attackType = PokemonType.valueOf(attackPokemon.getType().toUpperCase());
+        PokemonType defenseType = PokemonType.valueOf(defensePokemon.getType().toUpperCase());
         return effectiveness[attackType.ordinal()][defenseType.ordinal()];
     }
+    
 
-    // Example usage
-    public static void main(String[] args) {
-        PokemonType attackType = PokemonType.GRASS;
-        PokemonType defenseType = PokemonType.WATER;
-        
-        double effectiveness = getEffectiveness(attackType, defenseType);
-        
-        if (effectiveness > 1) {
-            System.out.println(attackType + " is super effective against " + defenseType);
-        } else if (effectiveness < 1) {
-            System.out.println(attackType + " is not very effective against " + defenseType);
-        } else {
-            System.out.println(attackType + " has a normal effectiveness against " + defenseType);
-        }
+    // Method to convert a String to PokemonType
+    public static PokemonType convertStringToPokemonType(String type) {
+        return PokemonType.valueOf(type.toUpperCase());
     }
 }
