@@ -29,7 +29,10 @@ public class Catch {
     public ArrayList<Pokemon> getPokemons() {
         return pokemons;
     }
-    
+
+    public void catchedPokemon(Pokemon pokemon) {
+        pokemons.add(pokemon);
+    }
 
     public boolean throwPokeball(Pokemon pokemon, PokeballType pokeballType) {
         int successRate = getSuccessRate(pokeballType);
@@ -86,10 +89,22 @@ public class Catch {
         }
     }
 
-    public void catchedPokemon(Pokemon pokemon) {
-        pokemons.add(pokemon);
+    private void displayCaughtPokemonNames() {
+        // Display the user's caught Pokemon
+        System.out.println("\nYour caught Pokemons:");
+        for (Pokemon userPokemon : pokemons) {
+            System.out.println(userPokemon.getName());
+        }
     }
-
+   
+    private void displayCaughtPokemonInfo() {
+        // Display the user's caught Pokemon info
+        System.out.println("\nThis will be your Pokemon choice during battle: \b");
+        for (Pokemon userPokemon : pokemons) {
+            System.out.println(userPokemon);
+        }
+    }
+    
     private int getSuccessRate(PokeballType pokeballType) {
         switch (pokeballType) {
             case POKEBALL:
@@ -140,7 +155,7 @@ public class Catch {
             Pokemon chosenPokemon = availablePokemon.get(index);
 
             // Display a message before catching the Pokemon
-            System.out.println("Time to catch " + chosenPokemon.getName() + "!");
+            System.out.println("\nTime to catch " + chosenPokemon.getName() + "!");
 
             // Check if the chosen Pokemon is already caught
             if (pokeCatcher.getPokemons().contains(chosenPokemon)) {
@@ -157,6 +172,8 @@ public class Catch {
                 caughtPokemonCount++;
             }
         }
+        displayCaughtPokemonNames();
+        displayCaughtPokemonInfo();
     }
 
     public static void catchFaintedPokemon(ArrayList<Pokemon> faintedPokemons, Catch pokeCatcher) {
@@ -165,7 +182,7 @@ public class Catch {
         System.out.println("\nWild Pokemon has fainted!");
     
         // Display the fainted Pokemon
-        System.out.println("Fainted Pokemon: ");
+        System.out.println("\nFainted Pokemon: ");
         for (Pokemon pokemon : faintedPokemons) {
             System.out.println(pokemon.getName());
         }
@@ -208,6 +225,9 @@ public class Catch {
     
             int index = choice - 'a';
             Pokemon chosenPokemon = faintedPokemons.get(index);
+
+            // Display a message before catching the Pokemon
+            System.out.println("\nTime to catch " + chosenPokemon.getName() + "!");
     
             // Try to catch the chosen Pokemon
             PokeballType selectedPokeball = pokeCatcher.choosePokeballType();
