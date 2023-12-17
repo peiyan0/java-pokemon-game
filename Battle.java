@@ -5,11 +5,14 @@ public class Battle {
     private ArrayList<Pokemon> enemyPokemons;
     private ArrayList<Pokemon> availablePokemons; 
     private ArrayList<Pokemon> faintedPokemons;
+    private int userTotalScore = 0;
+    private int computerTotalScore = 0;
 
     public Battle(ArrayList<Pokemon> userPokemons, ArrayList<Pokemon> availablePokemons) {
         this.userPokemons = userPokemons;
         this.availablePokemons = availablePokemons;
         this.faintedPokemons = new ArrayList<>();
+        this.enemyPokemons = new ArrayList<>();
         initializeEnemyPokemons(availablePokemons);
     }
     
@@ -25,25 +28,23 @@ public class Battle {
     public ArrayList<Pokemon> getFaintedPokemons() {
         return faintedPokemons;
     }
+    public int getUserTotalScore() {
+        return userTotalScore;
+    }
+    public int getComputerTotalScore() {
+        return computerTotalScore;
+    }
 
-
-    public void initializeEnemyPokemons(ArrayList<Pokemon> availablePokemons) {
+    private void initializeEnemyPokemons(ArrayList<Pokemon> availablePokemons) {
         enemyPokemons = new ArrayList<>(availablePokemons);
         enemyPokemons.removeAll(userPokemons);
-
-        // Ensure there are at least 2 remaining Pokemon to choose from
-        if (enemyPokemons.size() >= 2) {
-            // Randomly choose 2 enemy Pokemon
-            Collections.shuffle(enemyPokemons);
-            enemyPokemons = new ArrayList<>(enemyPokemons.subList(0, 2));
-        } else {
-            System.out.println("Not enough remaining Pokemon for enemies.");
-            // Handle this situation according to your game logic
-            enemyPokemons = new ArrayList<>(); // or handle it differently
-        }
+        // Randomly choose 2 enemy Pokemon
+        Collections.shuffle(enemyPokemons);
+        enemyPokemons = new ArrayList<>(enemyPokemons.subList(0, 2));
     }
 
     public void displayBattleDetails() {
+        System.out.println("\nNow...\nTwo wild Pokemons have appeared: " + enemyPokemons.get(0).getName() + " and " + enemyPokemons.get(1).getName() + "\n");
         System.out.println("The battle is about to start. Here are the details of the upcoming encounter:");
 
         // Displaying the details of Allied Pokemons
@@ -88,8 +89,7 @@ public class Battle {
 
     public void startBattle() {
         Catch pokeCatcher = new Catch();
-        int userTotalScore = 0;
-        int computerTotalScore = 0;
+        Score score = new Score();
     
         for (int round = 1; round <= 2; round++) {
             Pokemon userPokemon = chooseUserPokemonForBattle(round);
@@ -139,10 +139,10 @@ public class Battle {
     
         // Display overall battle end message
         System.out.println("\nBattle ended! Total Scores - User: " + userTotalScore + ", Computer: " + computerTotalScore);
+
+        //show score
+        score.calculateAndShowScore(userTotalScore, computerTotalScore);
     }
-    
-    
-    
 
     private void playerTurn(Pokemon playerPokemon, Pokemon enemyPokemon) {
         playerPokemon.attack();
@@ -156,20 +156,27 @@ public class Battle {
 
     private void displayBattleResults(Pokemon playerPokemon, Pokemon enemyPokemon) {
         System.out.println("\nBattle results:\n");
-        System.out.println("Player's Pokemon: " + playerPokemon);
-        System.out.println("Enemy's Pokemon: " + enemyPokemon);
-
-        // Determine effectiveness
+        System.out.printf("Player's Pokemon: %s (%s) - HP: %d\n",playerPokemon.getName(), playerPokemon.getType(), playerPokemon.getHp());
+        System.out.printf("Enemy's Pokemon: %s (%s) - HP: %d\n",enemyPokemon.getName(), enemyPokemon.getType(), enemyPokemon.getHp());
+    
+        // Determine the winner and effectiveness
+        boolean playerWins = playerPokemon.getHp() > enemyPokemon.getHp();
         double effectiveness = PokemonTypeInteractions.getEffectiveness(playerPokemon, enemyPokemon);
-
-        if (effectiveness > 1) {
-            System.out.println(playerPokemon.getName() + " is super effective against " + enemyPokemon.getName());
-        } else if (effectiveness < 1) {
-            System.out.println(playerPokemon.getName() + " is not very effective against " + enemyPokemon.getName());
+    
+        if (playerWins) {
+            System.out.println("");
+            System.out.println(playerPokemon.getName() + " wins against " + enemyPokemon.getName());
+            if (effectiveness > 1) {
+                System.out.println(playerPokemon.getName() + " is super effective against " + enemyPokemon.getName());
+            } else if (effectiveness < 1) {
+                System.out.println(playerPokemon.getName() + " is not very effective against " + enemyPokemon.getName());
+            } else {
+                System.out.println(playerPokemon.getName() + " has a normal effectiveness against " + enemyPokemon.getName());
+            }
         } else {
-            System.out.println(playerPokemon.getName() + " has a normal effectiveness against " + enemyPokemon.getName());
+            System.out.println(enemyPokemon.getName() + " wins against " + playerPokemon.getName());
+            System.out.println(playerPokemon.getName() + " is not very effective against " + enemyPokemon.getName());
         }
-
         System.out.println();
     }
 }
