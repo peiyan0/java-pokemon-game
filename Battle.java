@@ -47,6 +47,7 @@ public class Battle {
         System.out.println("\nNow...\nTwo wild Pokemons have appeared: " + enemyPokemons.get(0).getName() + " and " + enemyPokemons.get(1).getName() + "\n");
         System.out.println("The battle is about to start. Here are the details of the upcoming encounter:");
 
+        System.out.println("\n------------------------------------------------------------");
         // Displaying the details of Allied Pokemons
         System.out.println("\nAllied Pokemons:\n");
         for (Pokemon userPokemon : userPokemons) {
@@ -58,6 +59,7 @@ public class Battle {
         for (Pokemon enemyPokemon : enemyPokemons) {
             System.out.println(enemyPokemon);
         }
+        System.out.println("\n------------------------------------------------------------");
     }
 
     private Pokemon chooseUserPokemonForBattle(int round) {
@@ -164,7 +166,7 @@ public class Battle {
         double effectiveness = PokemonTypeInteractions.getEffectiveness(playerPokemon, enemyPokemon);
     
         if (playerWins) {
-            System.out.println("");
+            System.out.println("\n");
             System.out.println(playerPokemon.getName() + " wins against " + enemyPokemon.getName());
             if (effectiveness > 1) {
                 System.out.println(playerPokemon.getName() + " is super effective against " + enemyPokemon.getName());
