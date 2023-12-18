@@ -20,10 +20,4 @@ public class PokemonTypeInteractions {
         PokemonType defenseType = PokemonType.valueOf(defensePokemon.getType().toUpperCase());
         return effectiveness[attackType.ordinal()][defenseType.ordinal()];
     }
-    
-
-    // Method to convert a String to PokemonType
-    public static PokemonType convertStringToPokemonType(String type) {
-        return PokemonType.valueOf(type.toUpperCase());
-    }
 }
