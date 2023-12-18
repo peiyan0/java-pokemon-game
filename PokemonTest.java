@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class PokemonTest {
@@ -10,9 +11,6 @@ public class PokemonTest {
         ArrayList<Pokemon> userPokemons = pokeCatcher.getPokemons();
         // BATTLE
         Battle battle = new Battle(userPokemons, availablePokemon);
-        // Access the scores after the battle
-        int userTotalScore = battle.getUserTotalScore();
-        int computerTotalScore = battle.getComputerTotalScore();
         Score score = new Score();
 
         while (true) {
@@ -22,47 +20,50 @@ public class PokemonTest {
             System.out.println("3. See the ranking of battle scores");
             System.out.println("4. Exit");
 
-            System.out.print("\nEnter your choice (1-4): ");
-            int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline
+            try {
+                System.out.print("\nEnter your choice (1-4): ");
+                int choice = scanner.nextInt();
+                scanner.nextLine(); // Consume the newline
 
-            switch (choice) {
-                case 1:
-                    // Start the game
-                    System.out.println("\n------Starting The Game------\n");
+                switch (choice) {
+                    case 1:
+                        // Start the game
+                        System.out.println("\n------Starting The Game------\n");
 
-                    // SCENARIO 
-                    Scenario scenario = new Scenario();
-                    scenario.chooseScenario();
-                    
-                    // Display available Pokemon for catching
+                        // SCENARIO 
+                        Scenario scenario = new Scenario();
+                        scenario.chooseScenario();
 
-                    pokeCatcher.catchPokemon(availablePokemon, pokeCatcher);
+                        // Display available Pokemon for catching
+                        pokeCatcher.catchPokemon(availablePokemon, pokeCatcher);
 
-                    // Prepare for battle
-                    battle.displayBattleDetails();
-                    battle.startBattle();
-
-                    break;
-                case 2:
-                    // View all Pokémon
-                    // implement pokemon figure
-                    System.out.println("\n------All Pokémon------\n");
-                    for (Pokemon pokemon : availablePokemon) {
-                        System.out.println(pokemon);
-                    }
-                    break;
-                case 3:
-                    // See the ranking of battle scores
-                    score.displayTopScores();
-                    break;
-                case 4:
-                    // Exit the game
-                    System.out.println("\n------Exiting the game------");
-                    System.out.println("\nGoodbye!\n");
-                    System.exit(0);
-                default:
-                    System.out.println("Invalid choice. Please enter a number between 1 and 4.");
+                        // Prepare for battle
+                        battle.displayBattleDetails();
+                        battle.startBattle();
+                        break;
+                    case 2:
+                        // View all Pokémon
+                        // implement pokemon figure
+                        System.out.println("\n------All Pokémon------\n");
+                        for (Pokemon pokemon : availablePokemon) {
+                            System.out.println(pokemon);
+                        }
+                        break;
+                    case 3:
+                        // See the ranking of battle scores
+                        score.displayTopScores();
+                        break;
+                    case 4:
+                        // Exit the game
+                        System.out.println("\n------Exiting the game------");
+                        System.out.println("\nGoodbye!\n");
+                        System.exit(0);
+                    default:
+                        System.out.println("Invalid choice. Please enter a number between 1 and 4.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.nextLine(); // Consume the invalid input
             }
         }
     }
