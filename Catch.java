@@ -23,18 +23,19 @@ public class Catch {
         return catchGauge;
     }
 
-    public boolean canCatch() {
-        return catchGauge < CATCH_GAUGE_FULL; 
-    }
     public ArrayList<Pokemon> getPokemons() {
         return pokemons;
     }
 
-    public void catchedPokemon(Pokemon pokemon) {
+    private boolean canCatch() {
+        return catchGauge < CATCH_GAUGE_FULL; 
+    }
+
+    private void catchedPokemon(Pokemon pokemon) {
         pokemons.add(pokemon);
     }
 
-    public boolean throwPokeball(Pokemon pokemon, PokeballType pokeballType) {
+    private boolean throwPokeball(Pokemon pokemon, PokeballType pokeballType) {
         int successRate = getSuccessRate(pokeballType);
 
         // Check if the catch gauge allows catching the Pokemon
@@ -235,9 +236,9 @@ public class Catch {
     
             if (catchSuccess) {
                 pokeCatcher.catchedPokemon(chosenPokemon);
-                System.out.println("You caught the fainted wild Pokemon!");
+                System.out.println("\nYou caught the fainted wild Pokemon!");
             } else {
-                System.out.println("You failed to catch the fainted wild Pokemon.");
+                System.out.println("\nYou failed to catch the fainted wild Pokemon.");
             }
         } else {
             System.out.println("You chose not to catch the fainted wild Pokemon.");
