@@ -44,18 +44,18 @@ public class Battle {
     }
 
     public void displayBattleDetails() {
-        System.out.println("\nNow...\nTwo wild Pokemons have appeared: " + enemyPokemons.get(0).getName() + " and " + enemyPokemons.get(1).getName() + "\n");
+        System.out.println("\nNow...\nTwo wild Pokémons have appeared: " + enemyPokemons.get(0).getName() + " and " + enemyPokemons.get(1).getName() + "\n");
         System.out.println("The battle is about to start. Here are the details of the upcoming encounter:");
 
         System.out.println("\n------------------------------------------------------------");
-        // Displaying the details of Allied Pokemons
-        System.out.println("\nAllied Pokemons:\n");
+        // Displaying the details of Allied Pokémons
+        System.out.println("\nAllied Pokémons:\n");
         for (Pokemon userPokemon : userPokemons) {
             System.out.println(userPokemon);
         }
 
-        // Displaying the details of Enemy Pokemons
-        System.out.println("\nEnemy Pokemons:\n");
+        // Displaying the details of Enemy Pokémons
+        System.out.println("\nEnemy Pokémons:\n");
         for (Pokemon enemyPokemon : enemyPokemons) {
             System.out.println(enemyPokemon);
         }
@@ -66,12 +66,12 @@ public class Battle {
         Scanner scanner = new Scanner(System.in);
     
         // Display user's Pokémon
-        System.out.println("\nYour Pokemons:");
+        System.out.println("\nYour Pokémons:");
         for (int i = 0; i < userPokemons.size(); i++) {
             char choice = (char) ('a' + i);
             System.out.printf("%c. %s\n", choice, userPokemons.get(i));
         }
-        System.out.println("\nRound " + round + ": Choose 1 Pokemon for the battle (a-c):");
+        System.out.println("\nRound " + round + ": Choose 1 Pokémon for the battle (a-c):");
 
         char choice = scanner.nextLine().toLowerCase().charAt(0);
 
@@ -83,7 +83,7 @@ public class Battle {
         int index = choice - 'a';
         Pokemon chosenPokemon = userPokemons.get(index);
         
-        // Display a message indicating the chosen Pokemon
+        // Display a message indicating the chosen Pokémon
         System.out.println(chosenPokemon.getName() + " is chosen for the battle.");
     
         return chosenPokemon;
@@ -119,7 +119,7 @@ public class Battle {
     
         // Check if the wild Pokémon has fainted after both battles
         if (enemyPokemons.get(0).getHp() <= 0 || enemyPokemons.get(1).getHp() <= 0) {
-            // Add the fainted Pokemons to the list
+            // Add the fainted Pokémons to the list
             if (enemyPokemons.get(0).getHp() <= 0) {
                 faintedPokemons.add(enemyPokemons.get(0));
             }
@@ -127,7 +127,7 @@ public class Battle {
                 faintedPokemons.add(enemyPokemons.get(1));
             }
 
-            // Call the catchFaintedPokemon function for the fainted Pokemons
+            // Call the catchFaintedPokemon function for the fainted Pokémons
             Catch.catchFaintedPokemon(faintedPokemons, pokeCatcher);
 
             // Calculate remaining HP as the total score
@@ -158,8 +158,8 @@ public class Battle {
 
     private void displayBattleResults(Pokemon playerPokemon, Pokemon enemyPokemon) {
         System.out.println("\nBattle results:\n");
-        System.out.printf("Player's Pokemon: %s (%s) - HP: %d\n",playerPokemon.getName(), playerPokemon.getType(), playerPokemon.getHp());
-        System.out.printf("Enemy's Pokemon: %s (%s) - HP: %d\n",enemyPokemon.getName(), enemyPokemon.getType(), enemyPokemon.getHp());
+        System.out.printf("Player's Pokémon: %s (%s) - HP: %d\n",playerPokemon.getName(), playerPokemon.getType(), playerPokemon.getHp());
+        System.out.printf("Enemy's Pokémon: %s (%s) - HP: %d\n",enemyPokemon.getName(), enemyPokemon.getType(), enemyPokemon.getHp());
     
         // Determine the winner and effectiveness
         boolean playerWins = playerPokemon.getHp() > enemyPokemon.getHp();
