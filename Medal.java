@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Medal {
     private int medals;
@@ -33,30 +31,31 @@ public class Medal {
         items.add(new MiracleItem("Poké Ball Power"));
     }
 
-    public void convertDropsToMedals(int goldenChips, int goldenSands) {
-        this.medals += goldenChips + goldenSands;
-        System.out.println("Converted " + goldenChips + " Golden Chips and " + goldenSands + " Golden Sands into medals. Total medals: " + this.medals);
+    public void handleMedals() {
+        int goldenChips = (int) (Math.random() * 15);
+        int goldenSands = (int) (Math.random() * 5);
+
+        convertDropsToMedals(goldenChips, goldenSands);
+        activateMiracleItemChance();
     }
 
-    public MiracleItem miracleItemChance() {
+    private void convertDropsToMedals(int goldenChips, int goldenSands) {
+        this.medals += goldenChips + goldenSands;
+        System.out.println("\nAfter the battle, defeated Pokémon dropped " + goldenChips + " Golden Chips and " + goldenSands +" Golden Sands. ");
+        System.out.println("\nThese have been converted into Ga-Olé medals.");
+        System.out.println("\n------Total Medals------");
+        System.out.println("\n         "+this.medals+"\n");
+        System.out.println("------------------------");
+    }
+
+    private void activateMiracleItemChance() {
         if (this.medals >= 10) { // Assuming 10 medals are needed for a Miracle Item Chance
             this.medals -= 10;
-            return items.get(random.nextInt(items.size()));
+            MiracleItem miracleItem = items.get(random.nextInt(items.size()));
+
+            System.out.println("\nMiracle Item Chance activated! You got a " + miracleItem.getName()+"!");
         } else {
-            System.out.println("Not enough Ga-Olé medals for a Miracle Item Chance.");
-            return null;
-        }
-    }
-
-    public static void main(String[] args) {
-        Medal game = new Medal();
-        game.convertDropsToMedals(5, 5); // Random example values
-        Medal.MiracleItem miracleItem = game.miracleItemChance();
-
-        if (miracleItem != null) {
-            System.out.println("Miracle Item Chance activated! You got a " + miracleItem.getName());
+            System.out.println("\nUnfortunately, there's not enough Ga-Olé medals for a Miracle Item Chance. Better luck next time.");
         }
     }
 }
-
-
