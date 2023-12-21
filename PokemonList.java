@@ -6,22 +6,29 @@ public class PokemonList {
 
     // Initialize the Pokemon list with all the Pokemon
     static {
-        pokemonList.add(new Pokemon("Charmander", "Fire", 78, "Flame Burst", 10));
-        pokemonList.add(new Pokemon("Bulbasaur", "Grass", 90, "Vine Whip", 9));
-        pokemonList.add(new Pokemon("Squirtle", "Water", 88, "Water Gun", 8));
-        pokemonList.add(new Pokemon("Pikachu", "Electric", 70, "Thunder Shock", 8));
-        pokemonList.add(new Pokemon("Eevee", "Normal", 110, "Tackle", 8));
-        pokemonList.add(new Pokemon("Rattata", "Normal", 60, "Quick Attack", 8));
-        pokemonList.add(new Pokemon("Snorlax", "Normal", 250, "Body Slam", 9));
-        pokemonList.add(new Pokemon("Gloom", "Grass", 120, "Vine Whip", 8));
-        pokemonList.add(new Pokemon("Flareon", "Fire", 130, "Flame Thrower", 15));
-        pokemonList.add(new Pokemon("Vaporeon", "Water", 180, "Water Pulse", 13));
-        pokemonList.add(new Pokemon("Jolteon", "Electric", 130, "Thunder", 14));
-        pokemonList.add(new Pokemon("Leafeon", "Grass", 130, "Leaf Blade", 11));
-        pokemonList.add(new Pokemon("Raikou", "Electric", 800, "Discharge", 25));
-        pokemonList.add(new Pokemon("Entei", "Fire", 800, "Fire Fang", 25));
-        pokemonList.add(new Pokemon("Suicune", "Water", 800, "Hydro Pump", 25));
-    }
+        pokemonList.add(new Pokemon("Rattata", "Normal", 160, "Quick Attack", 3));
+        pokemonList.add(new waterPokemon("Squirtle", 188, "Water Gun", 3));
+        pokemonList.add(new waterPokemon("Psyduck", 170, "Water Gun", 3));
+        pokemonList.add(new electricPokemon("Pikachu",  170, "Thunder Shock", 3));
+        pokemonList.add(new Pokemon("Eevee", "Normal", 110, "Tackle", 3));
+        pokemonList.add(new grassPokemon("Gloom",  120, "Vine Whip", 3));
+        pokemonList.add(new firePokemon("Charmander", 378, "Flame Burst", 4));
+        pokemonList.add(new grassPokemon("Leafeon",  330, "Leaf Blade", 4));
+        pokemonList.add(new grassPokemon("Bulbasaur", 490, "Vine Whip", 4));
+        pokemonList.add(new waterPokemon("Starmie", 320, "Water Pulse", 4));
+        pokemonList.add(new waterPokemon("Vaporeon",  480, "Water Pulse", 4));
+        pokemonList.add(new electricPokemon("Jolteon",  530, "Thunder", 4));
+        pokemonList.add(new firePokemon("Flareon",  330, "Flame Thrower", 4));
+        pokemonList.add(new firePokemon("Arcanine", 290, "Fire Blast", 4));
+        pokemonList.add(new electricPokemon("Zapdos", 450, "Thunderbolt", 4));
+        pokemonList.add(new firePokemon("Magmar", 550, "Ember", 4));
+        pokemonList.add(new electricPokemon("Electabuzz", 400, "Thunder Punch", 4));
+        pokemonList.add(new Pokemon("Snorlax", "Normal", 250, "Body Slam", 4));
+        pokemonList.add(new electricPokemon("Raikou",  800, "Discharge", 5));
+        pokemonList.add(new firePokemon("Entei",  800, "Fire Fang", 5));
+        pokemonList.add(new waterPokemon("Suicune",  800, "Hydro Pump", 5));
+        pokemonList.add(new grassPokemon("Vileplume", 800, "Petal Dance", 5));
+    }    
 
     // Getter for the Pokemon list
     public static ArrayList<Pokemon> getPokemonList() {
