@@ -38,7 +38,7 @@ public class Catch {
     private boolean throwPokeball(Pokemon pokemon, PokeballType pokeballType) {
         int successRate = getSuccessRate(pokeballType);
 
-        // Check if the catch gauge allows catching the Pokemon
+        // Check if the catch gauge allows catching the Pokémon
         if (canCatch()) {
             // Generate a random number to determine if the catch is successful
             Random random = new Random();
@@ -51,7 +51,7 @@ public class Catch {
                 System.out.println("\nFailed to catch " + pokemon.getName() + " with a " + pokeballType + ".");
             }
         } else {
-            System.out.println("The catch gauge is full. Can't catch more Pokemon.");
+            System.out.println("The catch gauge is full. Can't catch more Pokémon.");
         }
 
         return false;
@@ -91,16 +91,16 @@ public class Catch {
     }
 
     private void displayCaughtPokemonNames() {
-        // Display the user's caught Pokemon
-        System.out.println("\nYour caught Pokemons:");
+        // Display the user's caught Pokémon
+        System.out.println("\nYour caught Pokémons:");
         for (Pokemon userPokemon : pokemons) {
             System.out.println(userPokemon.getName());
         }
     }
    
     private void displayCaughtPokemonInfo() {
-        // Display the user's caught Pokemon info
-        System.out.println("\nThis will be your Pokemon choice during battle: \b");
+        // Display the user's caught Pokémon info
+        System.out.println("\nThis will be your Pokémon choice during battle: \b");
         for (Pokemon userPokemon : pokemons) {
             System.out.println(userPokemon);
         }
@@ -125,29 +125,29 @@ public class Catch {
         Scanner scanner = new Scanner(System.in);
         int caughtPokemonCount = 0;
 
-        // Allow the user to catch up to 3 Pokemon
-        System.out.println("\nWild Pokemons have appear!");
+        // Allow the user to catch up to 3 Pokémon
+        System.out.println("\nWild Pokémons have appear!");
 
         while (caughtPokemonCount < 3) {
             // Shuffle the list using a random seed
             Collections.shuffle(availablePokemon);
 
-            // Display the first 6 Pokemon
-            System.out.println("\nPokemon Name (Type) - HP, Move (Move damage)\n");
+            // Display the first 6 Pokémon
+            System.out.println("\nPokémon Name (Type) - HP, Move (Grade)\n");
 
             for (int i = 0; i < 6; i++) {
                 char choice1 = (char) ('a' + i);
                 System.out.printf("%c. %s\n", 'a' + i, availablePokemon.get(i));
             }
 
-            System.out.println("You can catch up to 3 Pokemons!");
-            System.out.println("\nCatch Pokemon to make them yours (a-f) (eg. a):");
+            System.out.println("You can catch up to 3 Pokémons!");
+            System.out.println("\nCatch Pokémon to make them yours (a-f) (eg. a):");
 
             char choice = scanner.nextLine().toLowerCase().charAt(0);
 
             // Validate user input
             if (choice < 'a' || choice > 'f') {
-                System.out.println("Invalid input. Please choose a valid Pokemon (a-f).");
+                System.out.println("Invalid input. Please choose a valid Pokémon (a-f).");
                 continue;
             }
 
@@ -155,16 +155,16 @@ public class Catch {
 
             Pokemon chosenPokemon = availablePokemon.get(index);
 
-            // Display a message before catching the Pokemon
+            // Display a message before catching the Pokémon
             System.out.println("\nTime to catch " + chosenPokemon.getName() + "!");
 
-            // Check if the chosen Pokemon is already caught
+            // Check if the chosen Pokémon is already caught
             if (pokeCatcher.getPokemons().contains(chosenPokemon)) {
                 System.out.println("\n"+chosenPokemon.getName() + " is already in your team. Choose a different one.");
                 continue;
             }
 
-            // Try to catch the chosen Pokemon
+            // Try to catch the chosen Pokémon
             PokeballType selectedPokeball = pokeCatcher.choosePokeballType();
             boolean catchSuccess = pokeCatcher.throwPokeball(chosenPokemon, selectedPokeball);
 
@@ -180,21 +180,21 @@ public class Catch {
     public static void catchFaintedPokemon(ArrayList<Pokemon> faintedPokemons, Catch pokeCatcher) {
         Scanner scanner = new Scanner(System.in);
     
-        System.out.println("\nWild Pokemon has fainted!");
+        System.out.println("\nWild Pokémon has fainted!");
     
-        // Display the fainted Pokemon
-        System.out.println("\nFainted Pokemon: ");
+        // Display the fainted Pokémon
+        System.out.println("\nFainted Pokémon: ");
         for (Pokemon pokemon : faintedPokemons) {
             System.out.println(pokemon.getName());
         }
         System.out.println();
     
-        // Ask the user if they want to catch the fainted Pokemon
+        // Ask the user if they want to catch the fainted Pokémon
         String catchChoice;
         boolean validChoice = false;
     
         do {
-            System.out.println("Do you want to catch the fainted wild Pokemon? (y/n):");
+            System.out.println("Do you want to catch the fainted wild Pokémon? (y/n):");
             catchChoice = scanner.nextLine().toLowerCase();
     
             if ("y".equals(catchChoice) || "n".equals(catchChoice)) {
@@ -208,18 +208,18 @@ public class Catch {
         if ("y".equals(catchChoice)) {
             char choice;
     
-            // Automatically choose the fainted Pokemon if only one has fainted
+            // Automatically choose the fainted Pokémon if only one has fainted
             if (faintedPokemons.size() == 1) {
-                choice = 'a'; // Assuming the fainted Pokemon is the first one (index 0)
-                System.out.println("Catching fainted Pokemon: " + faintedPokemons.get(0).getName());
+                choice = 'a'; // Assuming the fainted Pokémon is the first one (index 0)
+                System.out.println("Catching fainted Pokémon: " + faintedPokemons.get(0).getName());
             } else {
-                // Allow the user to choose a Pokemon to catch
-                System.out.println("Choose a Pokemon to catch (a-b):");
+                // Allow the user to choose a Pokémon to catch
+                System.out.println("Choose a Pokémon to catch (a-b):");
                 choice = scanner.nextLine().toLowerCase().charAt(0);
     
                 // Validate user input
                 if (choice < 'a' || choice > 'b') {
-                    System.out.println("Invalid input. You chose not to catch the fainted wild Pokemon.");
+                    System.out.println("Invalid input. You chose not to catch the fainted wild Pokémon.");
                     return;
                 }
             }
@@ -227,21 +227,21 @@ public class Catch {
             int index = choice - 'a';
             Pokemon chosenPokemon = faintedPokemons.get(index);
 
-            // Display a message before catching the Pokemon
+            // Display a message before catching the Pokémon
             System.out.println("\nTime to catch " + chosenPokemon.getName() + "!");
     
-            // Try to catch the chosen Pokemon
+            // Try to catch the chosen Pokémon
             PokeballType selectedPokeball = pokeCatcher.choosePokeballType();
             boolean catchSuccess = pokeCatcher.throwPokeball(chosenPokemon, selectedPokeball);
     
             if (catchSuccess) {
                 pokeCatcher.catchedPokemon(chosenPokemon);
-                System.out.println("\nYou caught the fainted wild Pokemon!");
+                System.out.println("\nYou caught the fainted wild Pokémon!");
             } else {
-                System.out.println("\nYou failed to catch the fainted wild Pokemon.");
+                System.out.println("\nYou failed to catch the fainted wild Pokémon.");
             }
         } else {
-            System.out.println("You chose not to catch the fainted wild Pokemon.");
+            System.out.println("You chose not to catch the fainted wild Pokémon.");
         }
     }
 }    
