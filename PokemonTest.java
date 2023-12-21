@@ -40,6 +40,11 @@ public class PokemonTest {
                         // Prepare for battle
                         battle.displayBattleDetails();
                         battle.startBattle();
+
+                        // After battle, check if Pokemon dropped golden chips and golden sands
+                        Medal medals = new Medal();
+                        medals.handleMedals();
+                        System.out.println("\nCleaning The Battle Stage.......\n");
                         break;
                     case 2:
                         // View all Pokémon
