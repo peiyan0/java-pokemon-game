@@ -1,8 +1,9 @@
-import java.util.*;
+package Game;
 
-enum PokeballType {
-    POKEBALL, GREATBALL, ULTRABALL, MASTERBALL
-}
+import Model.PokeballType;
+import Model.Pokemon.Pokemon;
+
+import java.util.*;
 
 public class Catch {
     private static final int CATCH_GAUGE_FULL = 100;
@@ -141,7 +142,7 @@ public class Catch {
             }
 
             System.out.println("You can catch up to 3 Pokémons!");
-            System.out.println("\nCatch Pokémon to make them yours (a-f) (eg. a):");
+            System.out.println("\nGame.Catch Pokémon to make them yours (a-f) (eg. a):");
 
             char choice = scanner.nextLine().toLowerCase().charAt(0);
 

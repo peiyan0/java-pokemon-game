@@ -1,3 +1,7 @@
+package Game;
+
+import Model.Pokemon.Pokemon;
+
 import java.util.*;
 
 public class Battle {
@@ -38,7 +42,7 @@ public class Battle {
     private void initializeEnemyPokemons(ArrayList<Pokemon> availablePokemons) {
         enemyPokemons = new ArrayList<>(availablePokemons);
         enemyPokemons.removeAll(userPokemons);
-        // Randomly choose 2 enemy Pokemon
+        // Randomly choose 2 enemy Model.Pokemon1.Pokemon
         Collections.shuffle(enemyPokemons);
         enemyPokemons = new ArrayList<>(enemyPokemons.subList(0, 2));
     }
@@ -76,7 +80,7 @@ public class Battle {
         char choice = scanner.nextLine().toLowerCase().charAt(0);
 
         if (choice < 'a' || choice > 'c') {
-            System.out.println("Invalid input. Please choose a valid Pokemon (a-c).");
+            System.out.println("Invalid input. Please choose a valid Model.Pokemon1.Pokemon (a-c).");
             return null; // Return null in case of invalid input
         }
 
@@ -97,7 +101,7 @@ public class Battle {
             Pokemon userPokemon = chooseUserPokemonForBattle(round);
             Pokemon computerPokemon = enemyPokemons.get(round - 1);
     
-            System.out.println("\nBattle Start!\n");
+            System.out.println("\nGame.Battle Start!\n");
     
             while (userPokemon.getHp() > 0 && computerPokemon.getHp() > 0) {
                 playerTurn(userPokemon, computerPokemon);
@@ -140,7 +144,7 @@ public class Battle {
         }
     
         // Display overall battle end message
-        System.out.println("\nBattle ended! Total Scores - User: " + userTotalScore + ", Computer: " + computerTotalScore);
+        System.out.println("\nGame.Battle ended! Total Scores - User: " + userTotalScore + ", Computer: " + computerTotalScore);
 
         //show score
         score.calculateAndShowScore(userTotalScore, computerTotalScore);
@@ -157,7 +161,7 @@ public class Battle {
     }
 
     private void displayBattleResults(Pokemon playerPokemon, Pokemon enemyPokemon) {
-        System.out.println("\nBattle results:\n");
+        System.out.println("\nGame.Battle results:\n");
         System.out.printf("Player's Pokémon: %s (%s) - HP: %d\n",playerPokemon.getName(), playerPokemon.getType(), playerPokemon.getHp());
         System.out.printf("Enemy's Pokémon: %s (%s) - HP: %d\n",enemyPokemon.getName(), enemyPokemon.getType(), enemyPokemon.getHp());
     

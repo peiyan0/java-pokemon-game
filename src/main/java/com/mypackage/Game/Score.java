@@ -1,3 +1,5 @@
+package Game;
+
 import java.io.*;
 import java.util.*;
 
@@ -15,8 +17,8 @@ public class Score {
 
     public void calculateAndShowScore(int userScore, int computerScore) {
         int totalScore = userScore + Math.abs(computerScore);
-        System.out.println("Battle Score: " + totalScore);
-        System.out.println("\nScore will be saved after quitting the game");
+        System.out.println("Game.Battle Game.Score: " + totalScore);
+        System.out.println("\nGame.Score will be saved after quitting the game");
         checkTopScores(totalScore);
     }
 

@@ -1,7 +1,7 @@
-// Define Pokemon types
-enum PokemonType {
-    NORMAL, FIRE, WATER, ELECTRIC, GRASS
-}
+package Game;
+
+import Model.Pokemon.Pokemon;
+import Model.PokemonType;
 
 // Create a class to manage type interactions
 public class PokemonTypeInteractions {

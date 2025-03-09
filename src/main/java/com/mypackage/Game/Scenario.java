@@ -1,3 +1,5 @@
+package Game;
+
 import java.util.Scanner;
 
 public class Scenario {
@@ -8,7 +10,7 @@ public class Scenario {
 
         while (true) {
             // Display available scenarios
-            System.out.println("Choose a Battle Stage:");
+            System.out.println("Choose a Game.Battle Stage:");
             System.out.println("A. Alien Invasion");
             System.out.println("B. Treasure Hunt");
             System.out.println("C. Time Travel Dilemma");
@@ -36,6 +38,6 @@ public class Scenario {
 
             break; // Break the loop if a valid scenario choice is entered
         }
-        System.out.println(welcomeMessage);        
+        System.out.println(welcomeMessage);
     }
 }
