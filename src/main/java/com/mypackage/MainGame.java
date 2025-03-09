@@ -1,8 +1,16 @@
+import Game.Battle;
+import Game.Catch;
+import Game.Scenario;
+import Game.Score;
+import Model.Medal;
+import Model.Pokemon.Pokemon;
+import Model.Pokemon.PokemonList;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class PokemonTest {
+public class MainGame {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         // POKEMON & POKEMONLIST & CATCH
@@ -34,17 +42,17 @@ public class PokemonTest {
                         Scenario scenario = new Scenario();
                         scenario.chooseScenario();
 
-                        // Display available Pokemon for catching
+                        // Display available Model.Pokemon1.Pokemon for catching
                         pokeCatcher.catchPokemon(availablePokemon, pokeCatcher);
 
                         // Prepare for battle
                         battle.displayBattleDetails();
                         battle.startBattle();
 
-                        // After battle, check if Pokemon dropped golden chips and golden sands
+                        // After battle, check if Model.Pokemon1.Pokemon dropped golden chips and golden sands
                         Medal medals = new Medal();
                         medals.handleMedals();
-                        System.out.println("\nCleaning The Battle Stage.......\n");
+                        System.out.println("\nCleaning The Game.Battle Stage.......\n");
                         break;
                     case 2:
                         // View all Pokémon
