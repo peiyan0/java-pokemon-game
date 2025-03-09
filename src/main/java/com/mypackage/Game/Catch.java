@@ -1,6 +1,6 @@
 package Game;
 
-import Model.PokeballType;
+import Model.Type.PokeballType;
 import Model.Pokemon.Pokemon;
 
 import java.util.*;

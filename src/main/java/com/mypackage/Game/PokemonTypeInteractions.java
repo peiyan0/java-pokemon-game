@@ -1,7 +1,7 @@
 package Game;
 
 import Model.Pokemon.Pokemon;
-import Model.PokemonType;
+import Model.Type.PokemonType;
 
 // Create a class to manage type interactions
 public class PokemonTypeInteractions {
