@@ -1,8 +1,4 @@
-// pokemon's basic details
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+package Model.Pokemon;// pokemon's basic details
 
 public class Pokemon {
     private String name;
@@ -11,7 +7,7 @@ public class Pokemon {
     private String attackName;
     private int attackDamage;
 
-    // Constructor to initialize a Pokemon
+    // Constructor to initialize a Model.Pokemon1.Pokemon
     public Pokemon(String name, String type, int hp, String attackName, int attackDamage) {
         this.name = name;
         this.type = type;
@@ -43,7 +39,7 @@ public class Pokemon {
 
     @Override
     public String toString() {
-        return String.format("%s (%s) - HP: %d, Move: %s (%d)", name, type, hp, attackName, attackDamage);
+        return String.format("%s (%s) \t\t- HP: %d, Move: %s (%d)", name, type, hp, attackName, attackDamage);
     }
 
     // METHODS

@@ -1,10 +1,12 @@
+package Model.Pokemon;
+
 import java.util.ArrayList;
 
 public class PokemonList {
-    // List to store Pokemon instances
+    // List to store Model.Pokemon1.Pokemon instances
     private static ArrayList<Pokemon> pokemonList = new ArrayList<>();
 
-    // Initialize the Pokemon list with all the Pokemon
+    // Initialize the Model.Pokemon1.Pokemon list with all the Model.Pokemon1.Pokemon
     static {
         pokemonList.add(new Pokemon("Rattata", "Normal", 160, "Quick Attack", 3));
         pokemonList.add(new waterPokemon("Squirtle", 188, "Water Gun", 3));
@@ -30,7 +32,7 @@ public class PokemonList {
         pokemonList.add(new grassPokemon("Vileplume", 800, "Petal Dance", 5));
     }    
 
-    // Getter for the Pokemon list
+    // Getter for the Model.Pokemon1.Pokemon list
     public static ArrayList<Pokemon> getPokemonList() {
         return pokemonList;
     }
